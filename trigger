@@ -1,0 +1,27 @@
+CREATE OR REPLACE FUNCTION nova_operacao() RETURNS trigger AS '
+
+	from datetime import datetime
+ 
+	conta = TD["new"]["numero"]
+	novo_saldo = TD["new"]["saldo"]
+	antigo_saldo = TD["old"]["saldo"]
+	
+	insert_operacao = plpy.prepare("INSERT INTO operacoes (num_conta, data_oper, tipo_oper, valor) VALUES ($1, $2, $3, $4)", ["integer", "varchar(30)", "varchar(30)", "real"])
+
+	if(antigo_saldo < novo_saldo):
+		operacao = "Deposito"
+		valor = novo_saldo - antigo_saldo
+		
+	elif(antigo_saldo > novo_saldo):
+		operacao = "Saque"
+		valor = antigo_saldo - novo_saldo 
+
+	results = plpy.execute(insert_operacao, [conta, str(datetime.today()),operacao, valor])
+ 
+' LANGUAGE plpython3u;
+
+CREATE TRIGGER update_saldo
+AFTER UPDATE ON conta
+FOR EACH ROW
+WHEN (OLD.saldo IS DISTINCT FROM NEW.saldo)
+	EXECUTE PROCEDURE nova_operacao();

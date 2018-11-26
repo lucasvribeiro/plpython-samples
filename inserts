@@ -1,0 +1,14 @@
+INSERT INTO agencia (codigo, nome, endereco) VALUES
+    (100, 'Agência de Terra Boa', 'Av. Brasil, 750, Terra Boa - PR'),
+	(101, 'Agência de Campo Mourão', 'Av. Irmãos Pereira, 1500, Campo Mourão - PR');
+
+
+INSERT INTO cliente (cpf, nome) VALUES
+	(500, 'Lucas Terra Boa'),
+	(501, 'Lucão Cabeçote');
+
+INSERT INTO conta (numero, saldo, agencia, cliente) VALUES
+	(701, 900, 101, 501);
+	
+
+SELECT * FROM conta;

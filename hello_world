@@ -1,0 +1,13 @@
+CREATE OR REPLACE FUNCTION hello_world()
+RETURNS VARCHAR AS $$
+
+	return "Hello, World!"
+
+$$ LANGUAGE plpython3u;
+
+CREATE OR REPLACE FUNCTION hello_world(texto VARCHAR)
+RETURNS VARCHAR AS $$
+
+	return texto
+
+$$ LANGUAGE plpython3u;

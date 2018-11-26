@@ -1,0 +1,21 @@
+CREATE OR REPLACE FUNCTION aplica_rendimento(num_conta INTEGER)
+RETURNS VARCHAR AS 
+$$
+	saldo = plpy.execute('SELECT * FROM Conta C WHERE C.numero = '+ str(num_conta) + ';')[0]['saldo']	
+	novo_saldo = saldo					
+	cliente = plpy.execute('SELECT CC.nome FROM Conta C, Cliente CC WHERE C.numero = ' + str(num_conta) + ' and CC.cpf = C.cliente;')[0]['nome']
+	ret = ''
+	if(saldo >= 100000):
+		novo_saldo += novo_saldo * (0.5/100)
+	elif(saldo >= 10000):
+		novo_saldo += novo_saldo * (1/100)
+	elif(saldo >= 10000):
+		novo_saldo += novo_saldo * (1.5/100)
+	else:
+		novo_saldo += novo_saldo * (2/100)						   
+	plpy.execute("UPDATE conta SET saldo = " + str(novo_saldo) + " WHERE numero = 700;")
+	ret = "Cliente: " + str(cliente) + " || Novo Saldo: " + str(novo_saldo)
+	return ret
+$$ LANGUAGE plpython3u;
+
+SELECT aplica_rendimento(701);
