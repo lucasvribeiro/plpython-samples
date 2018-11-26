@@ -9,10 +9,10 @@ Os exemplos contidos neste repositório foram desenvolvidos por Lucas Vinicius R
 - PostgreSQL 10.6
 
 ***Descrição dos arquivos***
-- X: Script para Criação das Tabelas da base de dados utilizada (Sistema Bancário)
-- X: Script para Inserção de Alguns Valores nas Tabelas
-- X: Script de Criação da Função "Hello, World!" em PL/Python
-- X: Script de Criação da Função *aplica_rendimento* em PL/Python
-- X: Script de Criação do Gatilho *tal* em PL/Python
-- Y: Modelo Entidade-Relacionamento da base de dados utilizada como exemplo
+- criar_tabelas: Script para Criação das Tabelas da base de dados utilizada (Sistema Bancário)
+- inserts: Script para Inserção de Alguns Valores nas Tabelas
+- hello_world: Script de Criação da Função "Hello, World!" em PL/Python
+- aplica_rendimento: Script de Criação da Função *aplica_rendimento* em PL/Python
+- trigger: Script de Criação do Gatilho *tal* em PL/Python
+- modelo_er: Modelo Entidade-Relacionamento da base de dados utilizada como exemplo
 
