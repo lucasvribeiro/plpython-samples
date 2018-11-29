@@ -25,3 +25,8 @@ AFTER UPDATE ON conta
 FOR EACH ROW
 WHEN (OLD.saldo IS DISTINCT FROM NEW.saldo)
 	EXECUTE PROCEDURE nova_operacao();
+	
+	
+-- Teste de Funcionamento do Trigger --
+UPDATE conta SET saldo = saldo + 5000 WHERE numero = 700;
+SELECT * FROM operacoes;

@@ -9,11 +9,11 @@ $$
 		novo_saldo += novo_saldo * (0.5/100)
 	elif(saldo >= 10000):
 		novo_saldo += novo_saldo * (1/100)
-	elif(saldo >= 10000):
+	elif(saldo >= 1000):
 		novo_saldo += novo_saldo * (1.5/100)
 	else:
 		novo_saldo += novo_saldo * (2/100)						   
-	plpy.execute("UPDATE conta SET saldo = " + str(novo_saldo) + " WHERE numero = 700;")
+	plpy.execute("UPDATE conta SET saldo = " + str(novo_saldo) + " WHERE numero = " + str(num_conta) + ";")
 	ret = "Cliente: " + str(cliente) + " || Novo Saldo: " + str(novo_saldo)
 	return ret
 $$ LANGUAGE plpython3u;
