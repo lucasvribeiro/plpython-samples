@@ -1,4 +1,4 @@
-# PL / Python
+# 🐍 PL/Python
 This repository contains examples of using PL/Python in PostgreSQL.
 
 #### About
